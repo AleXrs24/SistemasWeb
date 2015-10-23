@@ -1,3 +1,10 @@
+<html>
+
+	<head>
+    	<meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
+	  	<title>Ver preguntas</title>
+	</head>
+
 <?php
 	mysql_connect("localhost","root","root") or die(mysql_error());
 	mysql_select_db("Quiz") or die(mysql_error());
