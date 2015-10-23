@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
+	  <title>Registro</title>
+	  <script>
+		  function vervalores() {
+ 			  var sAux = "";
+ 			  var frm = document.getElementById("registro");
+ 			  for (i = 0; i < frm.elements.length; i++) {
+ 				  sAux += "NOMBRE: " + frm.elements[i].name + " ";
+ 				  sAux += "VALOR: " + frm.elements[i].value + "\n";
+ 			  }
+ 			  alert(sAux);
+		  }
+
+      function validar() {
+        var camposTexto = document.getElementById("registro").elements;
+        var camposRadio = document.getElementsByName("especialidad");
+        var password = document.getElementById("contrasena");
+        var correo = document.getElementById("email");
+        var tlf = document.getElementById("telefono");
+        var name = document.getElementById("nombre");
+        var surname = document.getElementById("apellidos");
+        var expr_email = /^[a-zA-Z]+[0-9]{3}@ikasle.ehu.(es|eus)$/;
+        var expr_phone = /^\d{9}$/;
+        var expr_name = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]{3,12}$/;
+        var expr_surname = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]{3,12} [a-zA-ZñÑáéíóúÁÉÍÓÚ]{3,12}$/;
+
+        for (var i = 0; i < camposTexto.length; i++) {
+          if (camposTexto[i].value == '' && (camposTexto[i].type == 'text' || camposTexto[i].type == 'password')) {
+            alert("El campo " + camposTexto[i].id + " está vacío y es obligatorio");
+            return false;
+          } else if (/^\s+$/.test(camposTexto[i].value) && (camposTexto[i].type == 'text' || camposTexto[i].type == 'password')) {
+            alert("El campo " + camposTexto[i].id + " no se puede rellenar solamente con espacios en blanco");
+            return false;
+          }
+        }
+
+        for (var j = 0; j < camposRadio.length; j++) {    
+          if (camposRadio[j].checked) {
+            checked = true;
+            break;
+          }
+        }
+        if (checked != true) {
+          alert("El campo " + camposRadio[0].name + " tiene que tener alguna de las opciones seleccionada");
+          return false;
+        }
+
+        if (password.value.length < 6) {
+          alert("El campo " + password.id + " debe tener al menos 6 caracteres");
+          return false;
+        }
+
+        if (!(expr_email.test(correo.value))) {
+          alert("El formato del campo " + correo.id + " no es correcto. Asegúrese de que cumple el siguiente formato {Letras + 3 dígitos + “@ikasle.ehu.” + “es”/”eus”}");
+          return false;
+
+        }
+
+        if (!(expr_phone.test(tlf.value))) {
+          alert("El campo " + tlf.id + " debe tener 9 dígitos");
+          return false;
+        }
+
+        if (!(expr_name.test(name.value))) {
+          alert("El campo " + name.id + " debe contener de 3 a 12 caracteres alfabéticos");
+          return false;
+        }
+
+        if (!(expr_surname.test(surname.value))) {
+          alert("El campo " + surname.id + " debe contener 2 apellidos de 3 a 12 caracteres alfabéticos cada uno separados por un único espacio");
+          return false;
+        }
+        
+        alert("¡Todos los campos han sido validados de forma correcta!");
+        return true;
+      }
+
+      function crearCaja() {
+        var newbox = document.createElement('newbox');
+        newbox.innerHTML = '<input type="text" id="nueva_especialidad" name="especialidad" value="">';
+        document.getElementById("nuevacaja").appendChild(newbox);
+      }
+
+      function eliminarCaja() {
+        document.getElementById("nueva_especialidad").remove();
+      }
+
+	  </script>
+
+    <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
+    <script type="text/javascript" language="javascript">
+      $(window).load(function(){
+
+        $(function() {
+          $('#file-input').change(function(e) {
+            addImage(e); 
+          });
+
+          function addImage(e){
+            var file = e.target.files[0],
+            imageType = /image.*/;
+    
+            if (!file.type.match(imageType))
+              return;
+  
+            var reader = new FileReader();
+            reader.onload = fileOnload;
+            reader.readAsDataURL(file);
+          }
+  
+          function fileOnload(e) {
+            var result=e.target.result;
+            $('#imgSalida').attr("src",result);
+          }
+        });
+      });
+    </script>
+  </head>
+  
+  <body>
+    <div>
+  	  <form action='registrar.php' method='POST' id='registro' name='registro' onSubmit='return validar()'>
+        <p>Nombre: <input type='text' id='nombre' name='nombre' value=''></p>
+        <p>Apellidos: <input type='text' id='apellidos' name='apellidos' value=''></p>
+        <p>Dirección de correo: <input type='text' id='email' name='email' value=''></p>
+        <p>Contraseña: <input type='password' id='contrasena' name='contrasena' value=''></p>
+        <p>Número de teléfono: <input type='text' id='telefono' name='telefono' value=''></p>
+        <p>Especialidad: </p>
+        <input type='radio' onfocus="eliminarCaja()" name='especialidad' id='software' value='Ingenieria del Software'> Ingeniería del Software
+        <br/>
+        <input type='radio' onfocus="eliminarCaja()" name='especialidad' id='computadores' value='Ingenieria de Computadores'> Ingeniería de Computadores
+        <br/>
+        <input type='radio' onfocus="eliminarCaja()" name='especialidad' id='computacion' value='Computacion'> Computación
+        <br/>
+        <spam id="nuevacaja"><input type='radio' onfocus="crearCaja()" name='especialidad' id='otra' value=''> Otra: </spam>
+        <p>Tecnologías y herramientas en las que está interesado: </p>
+        <textarea cols="40" rows="7" name="tecnologias"></textarea>
+        <p>Ingresa el archivo: <input type='file' id ='file-input' name='file-input' /></p>
+        <img id="imgSalida" width="15%" height="15%" />
+        <p><input type='submit' name='enviar' value='Enviar'></p>
+        <a href="layout.html">Volver</a>
+      </form>
+    </div>
+  </body>
+</html>
