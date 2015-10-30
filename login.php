@@ -2,7 +2,7 @@
 	session_start();
 	
 	if (isset($_POST['email'])) { 
-		mysql_connect("localhost","root","root") or die(mysql_error()); 
+		mysql_connect("localhost","root","root") or die(mysql_error());
 		mysql_select_db("Quiz") or die(mysql_error());
 		$email=$_POST['email']; 
 		$pass=$_POST['pass']; 

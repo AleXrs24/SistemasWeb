@@ -1,7 +1,7 @@
 <?php
-	mysql_connect("localhost","root","roo") or die(mysql_error());
+	mysql_connect("localhost","root","root") or die(mysql_error());
 	mysql_select_db("Quiz") or die(mysql_error());
-	$email = $_POST[email];
+	$email = $_POST['email'];
 	$expr = '/^[a-zA-Z]+[0-9]{3}@ikasle.ehu.(es|eus)$/';
 	$verf = filter_var($email, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z]+[0-9]{3}@ikasle.ehu.(es|eus)$/")));
 	if ($verf == false) {
