@@ -21,4 +21,4 @@
 			</value>
 		</correctResponse>
 	</assessmentItem>
-<assessmentItem complexity="1" subject="safd"><itemBody><p>eii</p></itemBody><correctResponse><value>eii</value></correctResponse></assessmentItem><assessmentItem complexity="1" subject="safd"><itemBody><p>eii</p></itemBody><correctResponse><value>eii</value></correctResponse></assessmentItem><assessmentItem complexity="1" subject="safd"><itemBody><p>eii</p></itemBody><correctResponse><value>eii</value></correctResponse></assessmentItem></assessmentItems>
+<assessmentItem complexity="1" subject="Web"><itemBody><p>¿Cuál es el protocolo de transferencia de hipertexto?</p></itemBody><correctResponse><value>HTTP</value></correctResponse></assessmentItem><assessmentItem complexity="1" subject="Web"><itemBody><p>¿Qué extensión debemos dar a un fichero con código HTML y PHP? (sin el punto)</p></itemBody><correctResponse><value>PHP</value></correctResponse></assessmentItem></assessmentItems>

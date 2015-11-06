@@ -5,30 +5,6 @@
 	  	<title>Gestión de preguntas</title>
 
 	  	<script type="text/javascript">
-	  		/*
-	  		function obtenerPreguntas(){
-	  			xmlhttp = new XMLHttpRequest();
-	  			xmlhttp.onreadystatechange=function(){
-	  				if(xmlhttp.readyState==4 && xmlhttp.status==200){
-	  					document.getElementById("preguntas").innerHTML=xmlhttp.responseText;
-	  				}
-	  			}
-	  			xmlhttp.open("GET", "misPreguntas.php", true);
-	  			xmlhttp.send();
-	  		}
-
-	  		function insertarPregunta(){
-	  			xmlhttp = new XMLHttpRequest();
-	  			xmlhttp.onreadystatechange=function(){
-	  				if(xmlhttp.readyState==4 && xmlhttp.status==200){
-	  					document.getElementById("insertar").innerHTML=xmlhttp.responseText;
-	  				}
-	  			}
-	  			xmlhttp.open("GET", "insertarPregunta.php?pregunta="+document.Preguntas.pregunta.value+"&respuesta="+document.Preguntas.respuesta.value+"&complejidad="+document.Preguntas.complejidad.value+"&tema="+document.Preguntas.tema.value, true);
-	  			xmlhttp.send();
-	  			
-	  		}
-	  		*/
 
 	  		XMLHttpRequestObject = new XMLHttpRequest();
 	  		XMLHttpRequestObject.onreadystatechange = function(){

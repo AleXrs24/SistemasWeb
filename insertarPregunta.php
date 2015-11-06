@@ -6,8 +6,11 @@
 	$tema = $_GET['tema'];
 
 	if((!empty($pregunta))&&(!empty($respuesta))&&(!empty($_SESSION['email']))) {
+		/*
 		mysql_connect("localhost", "root", "root");
 		mysql_select_db("Quiz") or die(mysql_error());
+		*/
+		include 'conexion.php';
 
 		$sql="INSERT INTO Preguntas VALUES (NULL, '$_SESSION[email]', '$pregunta', '$respuesta', '$_GET[complejidad]')";
 
@@ -15,7 +18,6 @@
 			die('Error: ' . mysql_error());
 		} else {
 			//echo "<script> alert('Se ha realizado correctamente la inserción en la base de datos') </script>";
-			echo "Se ha insertado la pregunta en la base de datos\n";
 		}
 
 		mysql_close();
@@ -34,7 +36,7 @@
 			echo "No es posible la inserción en el fichero xml";
 		} else {
 			//echo "<p>Se ha insertado correctamente en el fichero xml</p><a href='VerPreguntasXML.php'>Ver preguntas desde fichero xml</a>";
-			echo "Se ha insertado la pregunta en el fichero XML";
 		}
+		echo "La pregunta se ha guardado correctamente";
 	}
 ?>

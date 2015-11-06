@@ -6,8 +6,11 @@
 	</head>
 
 <?php
+	/*
 	mysql_connect("localhost","root","root") or die(mysql_error());
 	mysql_select_db("Quiz") or die(mysql_error());
+	*/
+	include 'conexion.php';
 
 	$preguntas = mysql_query("SELECT t_pregunta, complejidad FROM Preguntas");
 
