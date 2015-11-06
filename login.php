@@ -12,7 +12,8 @@
 
 		if($cont==1) {
 			$_SESSION['email']=$_POST['email'];
-			header('location:InsertarPregunta.php');
+			//header('location:InsertarPregunta.php');
+			header('location:gestionPreguntas.php');
 		} else {
 			header('location:login.php');
 		}
@@ -32,7 +33,7 @@
 			<h2>Identificación de usuario</h2>
 			<p> Email : <input type="email" required name="email" size="21" value="" /> </p>
 			<p> Password: <input type="password" required name="pass" size="21" value="" /> </p>
-			<p> <input id="input" type="submit" /> </p>
+			<p> <input id="input" type="submit" value="Hacer login"/> </p>
 		</form>
 
 		<a href="layout.html"> Volver a la página de inicio </a>
