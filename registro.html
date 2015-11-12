@@ -2,31 +2,10 @@
 <html>
   <head>
     <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
-	  <title>Registro</title>
-	  <script type="text/javascript" src="js/registro.js"> </script>
+	<title>Registro</title>
 
-    <script type="text/JavaScript">
-      XMLHttpRequestObject = new XMLHttpRequest();
-        XMLHttpRequestObject.onreadystatechange = function(){
-          if((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200)){
-            document.getElementById("comprobacionEmail").innerHTML = XMLHttpRequestObject.responseText;
-            if(XMLHttpRequestObject.responseText=="Esta dirección de correo no está matriculada en Sistemas Web"){
-              document.getElementById("enviar").disabled = true;
-            }else{
-              alert('ei');
-            }
-          }
-        }
-
-        function comprobarEmail(){
-          var email = document.getElementById("email").value;
-          XMLHttpRequestObject.open("GET", "comprobarMatricula.php?email="+email, true);
-          XMLHttpRequestObject.send();
-        }
-      </script>
-
+    <script type="text/JavaScript" src="js/registro.js"></script>
     <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-
     <script type="text/javascript" language="javascript">
       $(window).load(function(){
 
@@ -59,9 +38,11 @@
   <body>
     <div>
   	  <form action='registrar.php' method='POST' id='registro' name='registro' onSubmit='return validar()'>
+      <fieldset>
+      <legend>Formulario de registro</legend>
         <p>Nombre: <input type='text' id='nombre' name='nombre' value=''></p>
         <p>Apellidos: <input type='text' id='apellidos' name='apellidos' value=''></p>
-        <p>Dirección de correo: <input type='text' id='email' name='email' value='' onblur="comprobarEmail()"></p> <div id="comprobacionEmail"></div>
+        <p>Dirección de correo: <input type='text' id='email' name='email' value='' onblur="comprobarEmail()"> <label id="comprobacionEmail"></label> </p> 
         <p>Contraseña: <input type='password' id='contrasena' name='contrasena' value=''></p>
         <p>Número de teléfono: <input type='text' id='telefono' name='telefono' value=''></p>
         <p>Especialidad: </p>
