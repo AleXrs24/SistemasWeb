@@ -1,8 +1,4 @@
 <?php
-	/*
-	mysql_connect("localhost","root","root") or die(mysql_error());
-	mysql_select_db("Quiz") or die(mysql_error());
-	*/
 	include 'conexion.php';
 	
 	$email = $_POST['email'];
@@ -13,6 +9,7 @@
 			<br>
 			<p><a href='registro.html'>Atrás</a></p>");
 	}
+	
 	$sql="INSERT INTO Usuario(email, nombre, apellidos, contrasena, telefono, especialidad, tecnologias) VALUES
 	('$_POST[email]','$_POST[nombre]','$_POST[apellidos]','$_POST[contrasena]','$_POST[telefono]','$_POST[especialidad]','$_POST[tecnologias]')";
 	if (!mysql_query($sql)) {

@@ -20,6 +20,13 @@
 	  			}
 	  		}
 
+	  		XMLHttpRequestObject3 = new XMLHttpRequest();
+	  		XMLHttpRequestObject3.onreadystatechange = function(){
+	  			if((XMLHttpRequestObject3.readyState==4)&&(XMLHttpRequestObject3.status=200)){
+	  				document.getElementById("numeroPreguntas").innerHTML = XMLHttpRequestObject3.responseText;
+	  			}
+	  		}
+
 	  		function obtenerPreguntas(){
 	  			XMLHttpRequestObject.open("GET", "misPreguntas.php", true);
 	  			XMLHttpRequestObject.send();
@@ -30,15 +37,25 @@
 	  			document.getElementById("Preguntas").reset();
 	  			XMLHttpRequestObject2.send();
 	  		}
+
+	  		function numeroPreguntas(){
+	  			setInterval(function(){
+	  				XMLHttpRequestObject3.open("GET", "numeroPreguntas.php", true);
+	  				XMLHttpRequestObject3.send();
+	  			}, 5000);
+	  			
+	  		}
 	  	</script>
 	</head>
 
-	<body>
+	<body onload="numeroPreguntas()">
 
 		<form>
 			<input type="button" name="verPreguntas" value="Ver mis preguntas" onClick="obtenerPreguntas()">
 		</form>
 		<div id="preguntas" style="background-color:#99FF66;">Aquí aparecerán tus preguntas</div>
+
+		<div id="numeroPreguntas" style="background-color:#99FF66;">Aquí apararece el número de preguntas</div>
 		
 		<br>
 		<form id="Preguntas" name="Preguntas" action="">
