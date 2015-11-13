@@ -17,6 +17,27 @@ function comprobarEmail(){
     XMLHttpRequestObject.send();
 }
 
+RequestPass = new XMLHttpRequest();
+RequestPass.onreadystatechange = function(){
+    document.getElementById("comprobacionPass").innerHTML = "Comprobando...";
+    
+    if((RequestPass.readyState==4)&&(RequestPass.status==200)){
+        document.getElementById("comprobacionPass").innerHTML = RequestPass.responseText;
+        if(RequestPass.responseText=="La contraseña no es segura"){
+            document.getElementById("enviar").disabled = true;
+            document.getElementById("comprobacionPass").style.color="red";
+        }else{
+            document.getElementById("comprobacionPass").style.color="green";
+        }
+    }
+}
+
+function comprobarPass(){
+    var pass = document.getElementById("contrasena").value;
+    RequestPass.open("GET", "clienteContraseña.php?pass="+pass, true);
+    RequestPass.send();
+}
+
 function vervalores() {
     var sAux = "";
  	var frm = document.getElementById("registro");
