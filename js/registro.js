@@ -15,8 +15,11 @@ XMLHttpRequestObject.onreadystatechange = function(){
 
 function comprobarEmail(){
     var email = document.getElementById("email").value;
-    XMLHttpRequestObject.open("GET", "comprobarMatricula.php?email="+email, true);
-    XMLHttpRequestObject.send();
+    if(email!=""){
+        XMLHttpRequestObject.open("GET", "comprobarMatricula.php?email="+email, true);
+        XMLHttpRequestObject.send();
+    }
+    
 }
 
 RequestPass = new XMLHttpRequest();
@@ -36,8 +39,11 @@ RequestPass.onreadystatechange = function(){
 
 function comprobar(){
     var pass = document.getElementById("contrasena").value;
-    RequestPass.open("GET", "clientePass.php?pass="+pass, true);
-    RequestPass.send();
+    if(pass!=""){
+        RequestPass.open("GET", "clientePass.php?pass="+pass, true);
+        RequestPass.send();
+    }
+    
 }
 
 function vervalores() {
