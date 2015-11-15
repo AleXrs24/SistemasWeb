@@ -3,7 +3,7 @@
 	require_once('lib/class.wsdlcache.php');
 
 	//$cliente = new nusoap_client("http://localhost/SistemasWeb/ComprobarContraseña.php?wsdl", false);
-	$cliente = new nusoap_client("http://http://swetxeberria.hol.es/SistemasWeb/ComprobarContraseña.php?wsdl", true);
+	$cliente = new nusoap_client("http://http://swetxeberria.hol.esComprobarContraseña.php?wsdl", false);
 
 	$result = $cliente->call('comprobarPass', array('x'=>$_GET['pass']));
 	

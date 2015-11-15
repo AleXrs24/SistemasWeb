@@ -3,7 +3,8 @@
 	require_once('lib/class.wsdlcache.php');
 
 	$server = new soap_server;
-	$ns="http://localhost/SistemasWeb";
+	//$ns="http://localhost/SistemasWeb";
+	$ns="http://http://swetxeberria.hol.es/";
 	$server->configureWSDL('comprobarPass',$ns);
 	$server->wsdl->schemaTargetNameespace=$ns;
 
