@@ -4,7 +4,7 @@
 
 	$server = new soap_server;
 	//$ns="http://localhost/SistemasWeb";
-	$ns="http://swetxeberria.hol.es/";
+	$ns="http://swetxeberria.hol.es";
 	$server->configureWSDL('comprobarPass',$ns);
 	$server->wsdl->schemaTargetNameespace=$ns;
 
