@@ -1,5 +1,7 @@
 XMLHttpRequestObject = new XMLHttpRequest();
 XMLHttpRequestObject.onreadystatechange = function(){
+    document.getElementById("comprobacionEmail").style.color="black";
+    document.getElementById("comprobacionEmail").innerHTML = "Comprobando...";
     if((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200)){
         document.getElementById("comprobacionEmail").innerHTML = XMLHttpRequestObject.responseText;
         if(XMLHttpRequestObject.responseText=="Esta dirección de correo no está matriculada en Sistemas Web"){
@@ -19,22 +21,22 @@ function comprobarEmail(){
 
 RequestPass = new XMLHttpRequest();
 RequestPass.onreadystatechange = function(){
+    document.getElementById("comprobacionPass").style.color="black";
     document.getElementById("comprobacionPass").innerHTML = "Comprobando...";
-    
     if((RequestPass.readyState==4)&&(RequestPass.status==200)){
         document.getElementById("comprobacionPass").innerHTML = RequestPass.responseText;
-        if(RequestPass.responseText=="La contraseña no es segura"){
-            document.getElementById("enviar").disabled = true;
-            document.getElementById("comprobacionPass").style.color="red";
-        }else{
+        if(RequestPass.responseText=="La contraseña es segura"){
             document.getElementById("comprobacionPass").style.color="green";
+        }else{
+            document.getElementById("comprobacionPass").style.color="red";
         }
     }
+    
 }
 
-function comprobarPass(){
+function comprobar(){
     var pass = document.getElementById("contrasena").value;
-    RequestPass.open("GET", "clienteContraseña.php?pass="+pass, true);
+    RequestPass.open("GET", "clientePass.php?pass="+pass, true);
     RequestPass.send();
 }
 
