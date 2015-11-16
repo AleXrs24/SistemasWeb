@@ -8,6 +8,7 @@ XMLHttpRequestObject.onreadystatechange = function(){
             document.getElementById("enviar").disabled = true;
             document.getElementById("comprobacionEmail").style.color="red";
         }else{
+            document.getElementById("enviar").disabled = false;
             document.getElementById("comprobacionEmail").style.color="green";
         }
     }
@@ -29,9 +30,11 @@ RequestPass.onreadystatechange = function(){
     if((RequestPass.readyState==4)&&(RequestPass.status==200)){
         document.getElementById("comprobacionPass").innerHTML = RequestPass.responseText;
         if(RequestPass.responseText=="La contraseña es segura"){
+            document.getElementById("enviar").disabled = false;
             document.getElementById("comprobacionPass").style.color="green";
         }else{
             document.getElementById("comprobacionPass").style.color="red";
+            document.getElementById("enviar").disabled = true;
         }
     }
     
