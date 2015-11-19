@@ -5,12 +5,12 @@ XMLHttpRequestObject.onreadystatechange = function(){
     if((XMLHttpRequestObject.readyState==4)&&(XMLHttpRequestObject.status==200)){
         document.getElementById("comprobacionEmail").innerHTML = XMLHttpRequestObject.responseText;
         if(XMLHttpRequestObject.responseText=="Esta dirección de correo no está matriculada en Sistemas Web"){
-            document.getElementById("enviar").disabled = true;
             document.getElementById("comprobacionEmail").style.color="red";
         }else{
-            document.getElementById("enviar").disabled = false;
             document.getElementById("comprobacionEmail").style.color="green";
         }
+
+        activarboton();
     }
 }
 
@@ -30,12 +30,12 @@ RequestPass.onreadystatechange = function(){
     if((RequestPass.readyState==4)&&(RequestPass.status==200)){
         document.getElementById("comprobacionPass").innerHTML = RequestPass.responseText;
         if(RequestPass.responseText=="La contraseña es segura"){
-            document.getElementById("enviar").disabled = false;
             document.getElementById("comprobacionPass").style.color="green";
         }else{
             document.getElementById("comprobacionPass").style.color="red";
-            document.getElementById("enviar").disabled = true;
         }
+
+        activarboton();
     }
     
 }
@@ -47,6 +47,28 @@ function comprobar(){
         RequestPass.send();
     }
     
+}
+
+function activarboton(){
+    if (XMLHttpRequestObject.responseText=="La dirección de correo es correcta" && RequestPass.responseText=="La contraseña es segura" && document.getElementById("contrasena").value==document.getElementById("repite-password").value) {
+        document.getElementById("enviar").disabled = false;
+    } else {
+        document.getElementById("enviar").disabled = true;
+    }
+}
+
+function comprobarContraseñas(){
+    document.getElementById("comprobacionContraseñas").style.color = "black";
+    document.getElementById("comprobacionContraseñas").innerHTML = "Las contraseñas coinciden";
+    if(document.getElementById("contrasena").value==document.getElementById("repite-password").value){
+        document.getElementById("comprobacionContraseñas").style.color = "green";
+        document.getElementById("comprobacionContraseñas").innerHTML = "Las contraseñas coinciden";
+    }else{
+        document.getElementById("comprobacionContraseñas").style.color = "red";
+        document.getElementById("comprobacionContraseñas").innerHTML = "Las contraseñas no coinciden";
+    }
+
+    activarboton();
 }
 
 function vervalores() {
